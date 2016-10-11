@@ -13,6 +13,9 @@
   var todo = Backbone.Model.extend({
     initialize: function() {
       console.log('This models  has been initialize.');
+      this.on('change', function(){
+        console.log('- Values for this model have changed.');
+    });
     },
     defaults:{
       title:'',
@@ -21,14 +24,16 @@
   });
   var todo1 = new todo();
 
-  console.log(JSON.stringify(todo1));
+  console.log(todo1.get('title'));
+  console.log(todo1.get('completed'));
 
   var todo2 = new todo({
     title:'Check the attributes of both models instances in the console',
     completed: true
   });
 
-  console.log(JSON.stringify(todo2));
+  console.log(todo2.get('title')) ;
+  console.log(todo2.get('completed'));
 
   var mytodo = new todo();
 </script>
